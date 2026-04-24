@@ -36,4 +36,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
+    }
 }

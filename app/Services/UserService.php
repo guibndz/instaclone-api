@@ -16,8 +16,7 @@ class UserService
     public function update(Request $request): User
     {
         $user = $request->user();
-
-        $data = request->validate([
+        $data = $request->validate([
             'name'     => 'sometimes|string|max:255',
             'username' => 'sometimes|string|max:255|unique:users,username,'.$user->id.'|alpha_dash',
             'bio'      => 'sometimes|nullable|string|max:500',
