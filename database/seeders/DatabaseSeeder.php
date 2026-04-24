@@ -3,23 +3,29 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $admin = User::firstOrCreate(['email' => 'gui@email.com'], [
+            'name' => 'Gui Bondezan',
+            'username' => 'guibondezan',
+            'password' => Hash::make('123456'),
+            'bio' => 'Desenvolvedor back-end focado em Laravel.'
         ]);
+
+        $joao = User::firstOrCreate(['email' => 'joao@email.com'], [
+            'name' => 'João',
+            'username' => 'joao123',
+            'password' => Hash::make('123456'),
+            'bio' => 'Apenas testando a rede.'
+        ]);
+
+        $admin->following()->syncWithoutDetaching([$joao->id]);
+
     }
 }
