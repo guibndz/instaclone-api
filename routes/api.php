@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FeedController;
 
  Route::get('/user', function (Request $request) {
      return $request->user();
@@ -36,4 +37,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/posts/{id}',               [PostController::class, 'update']);
     Route::delete('/posts/{id}',            [PostController::class, 'destroy']);
     Route::get('/users/{id}/posts',         [PostController::class, 'userPosts']);
+    Route::get('/feed',                     [FeedController::class, 'index']);
 });
