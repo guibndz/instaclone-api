@@ -20,8 +20,11 @@ class FollowService
 
         $targetUser = User::findOrFail($targetUserId);
         
-        // syncWithoutDetaching adiciona o vínculo sem apagar os outros e não duplica
         $currentUser->following()->syncWithoutDetaching([$targetUserId]);
+
+        app(NotificationService::class)->send($targetUserId, 'follow', [
+            'username' => $currentUser->username
+        ]);
 
         return ['message' => "Você agora está seguindo {$targetUser->username}"];
     }

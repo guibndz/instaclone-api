@@ -14,6 +14,11 @@ class LikeService
         $post->likes()->firstOrCreate([
             'user_id' => $user->id
         ]);
+        
+        app(NotificationService::class)->send($post->user_id, 'like', [
+            'post_id' => $post->id,
+            'username' => $user->username
+        ]);
 
         return ['message' => 'Post curtido com sucesso.'];
     }

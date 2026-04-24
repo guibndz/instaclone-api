@@ -17,6 +17,11 @@ class CommentService
 
         $post = Post::findOrFail($postId);
 
+        app(NotificationService::class)->send($post->user_id, 'comment', [
+            'post_id' => $post->id,
+            'username' => Auth::user()->username
+        ]);
+
         return $post->comments()->create([
             'user_id' => Auth::id(),
             'body'    => $data['body'],
