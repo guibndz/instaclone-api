@@ -8,6 +8,7 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\CommentController;
 
  Route::get('/user', function (Request $request) {
      return $request->user();
@@ -42,4 +43,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts/{id}/like',         [LikeController::class, 'like']);
     Route::delete('/posts/{id}/unlike',     [LikeController::class, 'unlike']);
     Route::get('/posts/{id}/likes',         [LikeController::class, 'likes']);
+    Route::post('/posts/{id}/comments',     [CommentController::class, 'store']);
+    Route::get('/posts/{id}/comments',      [CommentController::class, 'index']);
+    Route::put('/comments/{id}',            [CommentController::class, 'update']);
+    Route::delete('/comments/{id}',         [CommentController::class, 'destroy']);
 });
