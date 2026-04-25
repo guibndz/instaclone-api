@@ -1,0 +1,11 @@
+/vendor
+/node_modules
+/bootstrap/cache/*
+!/bootstrap/cache/.gitignore
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+.env
+.git
