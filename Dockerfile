@@ -26,7 +26,7 @@ RUN composer dump-autoload --classmap-authoritative --no-dev
 # -----------------------------------------------------------------------------
 # Stage 2: FrankenPHP runtime
 # -----------------------------------------------------------------------------
-FROM dunglas/frankenphp:1-php${PHP_VERSION}-alpine AS runtime
+FROM dunglas/frankenphp:1-php8.4-alpine AS runtime
 
 ENV APP_ENV=production \
     APP_DEBUG=false \
