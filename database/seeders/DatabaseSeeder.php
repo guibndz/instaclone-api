@@ -9,23 +9,17 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
+    /**
+     * Seed the application's database.
+     */
     public function run(): void
     {
-        $admin = User::firstOrCreate(['email' => 'gui@email.com'], [
-            'name' => 'Gui Bondezan',
-            'username' => 'guibondezan',
-            'password' => Hash::make('123456'),
-            'bio' => 'Desenvolvedor back-end focado em Laravel.'
+        User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'username' => 'testuser',
+            'email' => 'test@example.com',
         ]);
-
-        $joao = User::firstOrCreate(['email' => 'joao@email.com'], [
-            'name' => 'João',
-            'username' => 'joao123',
-            'password' => Hash::make('123456'),
-            'bio' => 'Apenas testando a rede.'
-        ]);
-
-        $admin->following()->syncWithoutDetaching([$joao->id]);
-
     }
 }
