@@ -44,8 +44,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts/{id}/like',           [LikeController::class, 'like']);
     Route::delete('/posts/{id}/unlike',       [LikeController::class, 'unlike']);
     Route::get('/posts/{id}/likes',           [LikeController::class, 'likes']);
-    Route::post('/posts/{id}/comments',       [CommentController::class, 'store']);
-    Route::get('/posts/{id}/comments',        [CommentController::class, 'index']);
+    Route::post('/posts/{postId}/comments',       [CommentController::class, 'store']);
+    Route::get('/posts/{postId}/comments',        [CommentController::class, 'index']);
     Route::put('/comments/{id}',              [CommentController::class, 'update']);
     Route::delete('/comments/{id}',           [CommentController::class, 'destroy']);
     Route::get('/notifications',              [NotificationController::class, 'index']);
