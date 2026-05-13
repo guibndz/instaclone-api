@@ -27,9 +27,9 @@ class CommentController extends Controller
     #[OA\RequestBody(
         required: true,
         content: new OA\JsonContent(
-            required: ['content'],
+            required: ['body'],
             properties: [
-                new OA\Property(property: 'content', type: 'string', example: 'Muito legal a foto!')
+                new OA\Property(property: 'body', type: 'string', example: 'Muito legal a foto!')
             ]
         )
     )]
@@ -64,9 +64,9 @@ class CommentController extends Controller
     #[OA\RequestBody(
         required: true,
         content: new OA\JsonContent(
-            required: ['content'],
+            required: ['body'],
             properties: [
-                new OA\Property(property: 'content', type: 'string', example: 'Corrigindo meu comentário...')
+                new OA\Property(property: 'body', type: 'string', example: 'Corrigindo meu comentário...')
             ]
         )
     )]
