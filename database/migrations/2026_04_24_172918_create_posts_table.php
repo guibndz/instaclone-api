@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('image_url');
             $table->text('caption')->nullable();
             $table->timestamps();
+            $table->index(['user_id', 'created_at']);
         });
     }
 
